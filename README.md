@@ -1,5 +1,7 @@
 # parallelize
 
+[![Build Status](https://travis-ci.org/alessioalex/parallelize.svg)](https://travis-ci.org/alessioalex/parallelize)
+
 control flow library for parallel async functions; it invokes the callback with the aggregated results or an error
 
                                          888 888          888 d8b                   
