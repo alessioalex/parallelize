@@ -1,0 +1,35 @@
+{
+  "name": "parallelize",
+  "version": "1.0.0",
+  "description": "Control flow library for parallel async functions; it invokes the callback with the aggregated results or an error",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alessioalex/parallelize"
+  },
+  "keywords": [
+    "control-flow",
+    "async",
+    "flow",
+    "after"
+  ],
+  "author": "Alexandru Vladutu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alessioalex/parallelize/issues"
+  },
+  "homepage": "https://github.com/alessioalex/parallelize",
+  "devDependencies": {
+    "tape": "~3.0.3",
+    "pre-commit": "JGAntunes/pre-commit"
+  },
+  "dependencies": {
+  }
+}
