@@ -19,6 +19,7 @@ control flow library for parallel async functions; it invokes the callback with 
 ```js
 var parallelize = require('../index');
 
+// this will fire once all functions are done
 var next = parallelize(function(err, results) {
   if (err) { throw err; }
 
@@ -36,6 +37,7 @@ var someAsyncFn = function(fn) {
 
 for (var i = 1; i <= 3; i++) {
   (function(i) {
+    // wrapping the callbacks with next (the fn returned by parallelize)
     someAsyncFn(next(function(err, result) {
       console.log('fn %s returned -> err: %s, result: %s', i, err, result);
     }));
@@ -61,7 +63,7 @@ The function returned by the module should wrap all your callbacks. It has two r
 With [npm](http://npmjs.org) do:
 
 ```
-npm install trumpet
+npm install parallelize
 ```
 
 # test
