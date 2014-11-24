@@ -1,7 +1,7 @@
 var test = require('tape');
 var parallelize = require('../');
 var noop = function(){};
-var immediate = setImmediate || function(fn) {
+var immediate = (typeof setImmediate !== 'undefined') ? setImmediate : function(fn) {
   setTimeout(fn, 0);
 };
 
