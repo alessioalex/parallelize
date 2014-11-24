@@ -1,9 +1,12 @@
 var test = require('tape');
 var parallelize = require('../');
 var noop = function(){};
+var immediate = setImmediate || function(fn) {
+  setTimeout(fn, 0);
+};
 
 var callFn = function(fn, args) {
-  setImmediate(function() {
+  immediate(function() {
     fn.apply(null, args);
   });
 };
@@ -11,8 +14,8 @@ var callFn = function(fn, args) {
 test('it should invoke the callback', function(t) {
   var next = parallelize(t.end);
 
-  setImmediate(next(noop));
-  setImmediate(next(noop));
+  immediate(next(noop));
+  immediate(next(noop));
 });
 
 test('it should aggregate the results properly', function(t) {
