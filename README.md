@@ -15,7 +15,6 @@ control flow library for parallel async functions; it invokes the callback with 
       888   
 
 [![Build Status](https://travis-ci.org/alessioalex/parallelize.svg)](https://travis-ci.org/alessioalex/parallelize)
-[![browser support](https://ci.testling.com/parallelize/parallelize.png)](https://ci.testling.com/alessioalex/parallelize)
 
 # example
 
