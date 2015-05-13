@@ -13,6 +13,9 @@ function parallelize(finalCallback) {
   return function wrapCallback(fn) {
     var that = this;
 
+    // used to aggregate the results in the order the functions were called,
+    // not their callbacks
+    var fnIndex = counter;
     counter++;
 
     // this will aggregate the results and call your original callback functions
@@ -20,8 +23,11 @@ function parallelize(finalCallback) {
     return function parallelCb(err) {
       fn.apply(that, arguments);
 
-      // aggregate whatever is after the error argument
-      Array.prototype.push.apply(results, Array.prototype.slice.call(arguments, 1));
+      // aggregate (in order) whatever is after the error argument
+      var args = Array.prototype.slice.call(arguments, 1);
+      // when there are multiple arguments push an array with the fn results,
+      // otherwise push the single argument
+      results[fnIndex] = (args.length <= 1) ? (args[0] || null) : args;
 
       if (err) {
         called = true;

@@ -5,10 +5,10 @@ var immediate = (typeof setImmediate !== 'undefined') ? setImmediate : function(
   setTimeout(fn, 0);
 };
 
-var callFn = function(fn, args) {
-  immediate(function() {
+var callFn = function(fn, args, timeout) {
+  setTimeout(function() {
     fn.apply(null, args);
-  });
+  }, timeout || 1);
 };
 
 test('it should invoke the callback', function(t) {
@@ -18,15 +18,26 @@ test('it should invoke the callback', function(t) {
   immediate(next(noop));
 });
 
-test('it should aggregate the results properly', function(t) {
+test('it should aggregate the results in the correct order', function(t) {
   var next = parallelize(function(err, results) {
     t.equal(null, err);
-    t.deepEqual([1, 2, 3, 4], results);
+    t.deepEqual([[1, 2], [3, 4]], results);
     t.end();
   });
 
-  callFn(next(noop), [null, 1, 2]);
-  callFn(next(noop), [null, 3, 4]);
+  callFn(next(noop), [null, 1, 2], 200);
+  callFn(next(noop), [null, 3, 4], 100);
+});
+
+test('it should know to put an item instead of an array of results', function(t) {
+  var next = parallelize(function(err, results) {
+    t.equal(null, err);
+    t.deepEqual([1, [3, 4]], results);
+    t.end();
+  });
+
+  callFn(next(noop), [null, 1], 200);
+  callFn(next(noop), [null, 3, 4], 100);
 });
 
 test('it should return an error', function(t) {

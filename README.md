@@ -26,7 +26,7 @@ var next = parallelize(function(err, results) {
   if (err) { throw err; }
 
   console.log('\n------------ ALL DONE ------------ \n');
-  console.log(results);
+  console.log(results); // results === Array
 });
 
 var someAsyncFn = function(fn) {
@@ -59,6 +59,7 @@ The function returned by the module should wrap all your callbacks. It has two r
 
 - increase the internal parallel functions counter (to know how many functions there are)
 - replaces your callbacks with a custom callback that decreases the counter until it reaches 0 or there's an error
+- remembers the results of the async callbacks into order; if the callback is invoked with multiple arguments it puts those into an array
 
 # install
 
