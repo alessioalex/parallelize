@@ -1,3 +1,9 @@
+## 2.1.1 (2015-05-13)
+
+Improvements:
+
+  - make callbacks optional
+
 ## 2.1.0 (2015-05-13)
 
 Improvements:
