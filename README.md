@@ -71,6 +71,8 @@ should output:
   [ 0, [ 1, 2 ], [ 3, 4 ] ]
 ```
 
+If you'd prefer to have a results object instead of an array check the `results-object.js` example for more details.
+
 # motivation
 
 I wanted something similar to [after](http://npm.im/after) that aggregates results.

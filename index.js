@@ -1,7 +1,7 @@
 "use strict";
 
 function parallelize(finalCallback) {
-  var results = [];
+  var results;
   var counter = 0;
   var called = false;
 
@@ -11,18 +11,30 @@ function parallelize(finalCallback) {
   // so that we know how many parallel functions there are
   // this wrapper function should be executed right away, not in some setTimeout
   return function wrapCallback(fn) {
+    var fnIndex;
+    var fnType = typeof fn;
     var that = this;
 
     // used to aggregate the results in the order the functions were called,
     // not their callbacks
-    var fnIndex = counter;
+    // results can be an array or an object
+    if (fnType === 'string') {
+      fnIndex = fn;
+
+      if (!results) { results = {}; }
+    } else {
+      fnIndex = counter;
+
+      if (!results) { results = []; }
+    }
+
     counter++;
 
     // this will aggregate the results and call your original callback functions
     // in case there's an error it will return right away
     return function parallelCb(err) {
       // callback is optional
-      fn && fn.apply(that, arguments);
+      if (fnType === 'function') { fn.apply(that, arguments); }
 
       // aggregate (in order) whatever is after the error argument
       var args = Array.prototype.slice.call(arguments, 1);

@@ -1,3 +1,5 @@
+"use strict";
+
 var test = require('tape');
 var parallelize = require('../');
 var noop = function(){};
@@ -32,8 +34,22 @@ test('it should aggregate the results in the correct order', function(t) {
     t.end();
   });
 
-  callFn(next(noop), [null, 1, 2], 200);
-  callFn(next(noop), [null, 3, 4], 100);
+  callFn(next(noop), [null, 1, 2], 100);
+  callFn(next(noop), [null, 3, 4], 1);
+});
+
+test('it should return an object instead of an array', function(t) {
+  var next = parallelize(function(err, results) {
+    t.equal(null, err);
+    t.deepEqual({
+      "first": [1, 2],
+      "second": [3, 4]
+    }, results);
+    t.end();
+  });
+
+  callFn(next('first'), [null, 1, 2], 100);
+  callFn(next('second'), [null, 3, 4], 1);
 });
 
 test('it should know to put an item instead of an array of results', function(t) {
@@ -43,8 +59,8 @@ test('it should know to put an item instead of an array of results', function(t)
     t.end();
   });
 
-  callFn(next(noop), [null, 1], 200);
-  callFn(next(noop), [null, 3, 4], 100);
+  callFn(next(noop), [null, 1], 100);
+  callFn(next(noop), [null, 3, 4], 1);
 });
 
 test('it should return an error', function(t) {
