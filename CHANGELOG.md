@@ -1,3 +1,13 @@
+## 2.1.0 (2015-05-13)
+
+Improvements:
+
+  - more polished example
+
+Bugfixes:
+
+  - when 0 was the only arg returned by the async fn it was overriden to null
+
 ## 2.0.0 (2015-05-13)
 
 Features:
