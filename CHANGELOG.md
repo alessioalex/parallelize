@@ -1,3 +1,9 @@
+## 2.2.0 (2015-05-13)
+
+Features:
+
+  - results can now be an object with custom specified properties
+
 ## 2.1.1 (2015-05-13)
 
 Improvements:
