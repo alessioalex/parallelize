@@ -21,7 +21,8 @@ function parallelize(finalCallback) {
     // this will aggregate the results and call your original callback functions
     // in case there's an error it will return right away
     return function parallelCb(err) {
-      fn.apply(that, arguments);
+      // callback is optional
+      fn && fn.apply(that, arguments);
 
       // aggregate (in order) whatever is after the error argument
       var args = Array.prototype.slice.call(arguments, 1);

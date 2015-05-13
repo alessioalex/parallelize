@@ -11,11 +11,18 @@ var callFn = function(fn, args, timeout) {
   }, timeout || 1);
 };
 
-test('it should invoke the callback', function(t) {
+test('it should invoke the "final" callback', function(t) {
   var next = parallelize(t.end);
 
   immediate(next(noop));
   immediate(next(noop));
+});
+
+test('it should not require callbacks', function(t) {
+  var next = parallelize(t.end);
+
+  immediate(next());
+  immediate(next());
 });
 
 test('it should aggregate the results in the correct order', function(t) {

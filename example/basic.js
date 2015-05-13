@@ -42,3 +42,11 @@ callAsyncFn(next(function(err, result) {
 
   [ 0, [ 1, 2 ], [ 3, 4 ] ]
 */
+
+// Or (since the callbacks are optional):
+/*
+callAsyncFn(next(), 300, [0]);
+callAsyncFn(next(), 100, [1, 2]);
+callAsyncFn(next(), 150, [3, 4]);
+*/
+

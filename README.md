@@ -50,6 +50,13 @@ callAsyncFn(next(function(err, result) {
 callAsyncFn(next(function(err, result) {
   console.log('3rd function called after 150 ms, result: %s', result);
 }), 150, [3, 4]);
+
+// Or (since the callbacks are optional):
+/*
+callAsyncFn(next(), 300, [0]);
+callAsyncFn(next(), 100, [1, 2]);
+callAsyncFn(next(), 150, [3, 4]);
+*/
 ```
 
 should output:
