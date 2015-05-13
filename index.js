@@ -25,9 +25,11 @@ function parallelize(finalCallback) {
 
       // aggregate (in order) whatever is after the error argument
       var args = Array.prototype.slice.call(arguments, 1);
+      // `null` when no args are returned
+      if (!args.length) { args[0] = null; }
       // when there are multiple arguments push an array with the fn results,
       // otherwise push the single argument
-      results[fnIndex] = (args.length <= 1) ? (args[0] || null) : args;
+      results[fnIndex] = (args.length <= 1) ? args[0] : args;
 
       if (err) {
         called = true;
