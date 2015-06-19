@@ -1,3 +1,9 @@
+## 2.2.1 (2015-06-19)
+
+Improvements:
+
+  - using `sliced` instead of `Array.prototype.slice` to improve performance
+
 ## 2.2.0 (2015-05-13)
 
 Features:
