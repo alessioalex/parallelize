@@ -2,7 +2,6 @@
 'use strict';
 
 var parallelize = require('../');
-var noop = function() {};
 
 var next = parallelize(function(err, results) {
   if (err) { throw err; }
@@ -20,5 +19,5 @@ var someAsyncFn = function(fn) {
 };
 
 for (var i = 1; i <= 3; i++) {
-  someAsyncFn(next(noop));
+  someAsyncFn(next());
 }
