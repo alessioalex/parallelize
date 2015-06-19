@@ -31,14 +31,20 @@
     "pre-commit": "JGAntunes/pre-commit"
   },
   "dependencies": {
+    "sliced": "0.0.5"
   },
   "testling": {
     "files": "test/*.js",
     "browsers": [
       "ie/8..latest",
-      "firefox/16", "firefox/latest", "firefox/nightly",
-      "chrome/22", "chrome/latest", "chrome/canary",
-      "opera/12..latest", "opera/next",
+      "firefox/16",
+      "firefox/latest",
+      "firefox/nightly",
+      "chrome/22",
+      "chrome/latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
       "safari/5.1..latest"
     ]
   }

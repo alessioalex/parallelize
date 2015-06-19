@@ -1,5 +1,7 @@
 "use strict";
 
+var sliced = require('sliced');
+
 function parallelize(finalCallback) {
   var results;
   var counter = 0;
@@ -37,7 +39,7 @@ function parallelize(finalCallback) {
       if (fnType === 'function') { fn.apply(that, arguments); }
 
       // aggregate (in order) whatever is after the error argument
-      var args = Array.prototype.slice.call(arguments, 1);
+      var args = sliced(arguments, 1);
       // `null` when no args are returned
       if (!args.length) { args[0] = null; }
       // when there are multiple arguments push an array with the fn results,
