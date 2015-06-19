@@ -2,18 +2,6 @@
 
 control flow library for parallel async functions; it invokes the callback with the aggregated results or an error
 
-                                         888 888          888 d8b                   
-                                         888 888          888 Y8P                   
-                                         888 888          888                       
-      88888b.   8888b.  888d888  8888b.  888 888  .d88b.  888 888 88888888  .d88b.  
-      888 "88b     "88b 888P"       "88b 888 888 d8P  Y8b 888 888    d88P  d8P  Y8b 
-      888  888 .d888888 888     .d888888 888 888 88888888 888 888   d88P   88888888 
-      888 d88P 888  888 888     888  888 888 888 Y8b.     888 888  d88P    Y8b.     
-      88888P"  "Y888888 888     "Y888888 888 888  "Y8888  888 888 88888888  "Y8888  
-      888                                                                           
-      888                                                                           
-      888   
-
 [![Build Status](https://travis-ci.org/alessioalex/parallelize.svg)](https://travis-ci.org/alessioalex/parallelize)
 
 # example
