@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
 var sliced = require('sliced');
 
-function parallelize(finalCallback) {
+function parallelize(finalCb) {
   var results;
   var counter = 0;
   var called = false;
 
-  finalCallback = finalCallback || function noop() {};
+  var finalCallback = finalCb || function noop() {};
 
   // this fn has the role of increasing the counter
   // so that we know how many parallel functions there are
@@ -52,8 +52,8 @@ function parallelize(finalCallback) {
       } else if (!called && !--counter) {
         finalCallback(null, results);
       }
-    }
+    };
   };
-};
+}
 
 module.exports = parallelize;

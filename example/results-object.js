@@ -1,4 +1,5 @@
-"use strict";
+/*eslint-disable no-console, func-names, handle-callback-err */
+'use strict';
 
 var parallelize = require('../');
 
@@ -11,8 +12,6 @@ var next = parallelize(function(err, results) {
 });
 
 var callAsyncFn = function(fn, interval, args) {
-  var interval = interval;
-
   setTimeout(function() {
     // first arg of an async fn should be the err
     args.unshift(null);

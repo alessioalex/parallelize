@@ -8,7 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "lint": "eslint index.js example/*.js test/test.js",
+    "precommit": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
@@ -27,8 +29,9 @@
   },
   "homepage": "https://github.com/alessioalex/parallelize",
   "devDependencies": {
-    "tape": "~3.0.3",
-    "pre-commit": "JGAntunes/pre-commit"
+    "eslint": "^0.23.0",
+    "husky": "^0.8.1",
+    "tape": "~3.0.3"
   },
   "dependencies": {
     "sliced": "0.0.5"

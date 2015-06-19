@@ -1,8 +1,9 @@
-"use strict";
+/*eslint-disable func-names */
+'use strict';
 
 var test = require('tape');
 var parallelize = require('../');
-var noop = function(){};
+var noop = function() {};
 var immediate = (typeof setImmediate !== 'undefined') ? setImmediate : function(fn) {
   setTimeout(fn, 0);
 };
@@ -13,7 +14,7 @@ var callFn = function(fn, args, timeout) {
   }, timeout || 1);
 };
 
-test('it should invoke the "final" callback', function(t) {
+test('it should invoke the final callback', function(t) {
   var next = parallelize(t.end);
 
   immediate(next(noop));
@@ -42,8 +43,8 @@ test('it should return an object instead of an array', function(t) {
   var next = parallelize(function(err, results) {
     t.equal(null, err);
     t.deepEqual({
-      "first": [1, 2],
-      "second": [3, 4]
+      'first': [1, 2],
+      'second': [3, 4]
     }, results);
     t.end();
   });
@@ -66,7 +67,7 @@ test('it should know to put an item instead of an array of results', function(t)
 test('it should return an error', function(t) {
   var error = new Error('my err');
 
-  var next = parallelize(function(err, results) {
+  var next = parallelize(function(err) {
     t.equal(error, err);
     t.end();
   });

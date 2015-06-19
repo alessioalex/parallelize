@@ -1,4 +1,5 @@
-"use strict";
+/*eslint-disable no-console, func-names, handle-callback-err */
+'use strict';
 
 var parallelize = require('../');
 var noop = function() {};
