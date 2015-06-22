@@ -10,6 +10,7 @@
   "scripts": {
     "test": "node test/test.js",
     "lint": "eslint index.js example/*.js test/test.js",
+    "benchmark": "matcha benchmark/go.js",
     "precommit": "npm run lint && npm test"
   },
   "repository": {
@@ -29,8 +30,13 @@
   },
   "homepage": "https://github.com/alessioalex/parallelize",
   "devDependencies": {
+    "async": "^1.2.1",
     "eslint": "^0.23.0",
+    "fastparallel": "^1.5.3",
     "husky": "^0.8.1",
+    "matcha": "^0.6.0",
+    "neo-async": "^1.2.1",
+    "run-parallel": "^1.1.1",
     "tape": "~3.0.3"
   },
   "dependencies": {
