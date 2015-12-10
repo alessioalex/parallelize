@@ -17,6 +17,8 @@ var callFn = function(fn, args, timeout) {
 test('it should invoke the final callback', function(t) {
   var next = parallelize(t.end);
 
+  console.log('b');
+
   immediate(next(noop));
   immediate(next(noop));
 });

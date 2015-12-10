@@ -3,13 +3,7 @@
 
 var parallelize = require('../');
 
-var next = parallelize(function(err, results) {
-  if (err) { throw err; }
-
-  console.log('\n------------ ALL DONE ------------ \n');
-  // results is an object this time
-  console.log(results);
-});
+var next = parallelize();
 
 var callAsyncFn = function(fn, interval, args) {
   setTimeout(function() {
@@ -22,6 +16,14 @@ var callAsyncFn = function(fn, interval, args) {
 callAsyncFn(next('firstFn'), 300, [0]);
 callAsyncFn(next('secondFn'), 100, [1, 2]);
 callAsyncFn(next('thirdFn'), 150, [3, 4]);
+
+next(function(err, results) {
+  if (err) { throw err; }
+
+  console.log('\n------------ ALL DONE ------------ \n');
+  // results is an object this time
+  console.log(results);
+});
 
 // Should output ->
 /*

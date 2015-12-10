@@ -3,11 +3,7 @@
 
 var parallelize = require('../');
 
-var next = parallelize(function(err, results) {
-  if (err) { throw err; }
-
-  console.log(results);
-});
+var next = parallelize();
 
 var someAsyncFn = function(fn) {
   var interval = Math.floor(Math.random() * 10) * 100 + 500;
@@ -21,3 +17,9 @@ var someAsyncFn = function(fn) {
 for (var i = 1; i <= 3; i++) {
   someAsyncFn(next());
 }
+
+next(function(err, results) {
+  if (err) { throw err; }
+
+  console.log(results);
+});
