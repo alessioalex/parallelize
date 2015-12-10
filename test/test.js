@@ -1,4 +1,4 @@
-/*eslint-disable func-names */
+/* eslint-disable func-names */
 'use strict';
 
 var test = require('tape');
@@ -43,8 +43,8 @@ test('it should return an object instead of an array', function(t) {
   var next = parallelize(function(err, results) {
     t.equal(null, err);
     t.deepEqual({
-      'first': [1, 2],
-      'second': [3, 4]
+      first: [1, 2],
+      second: [3, 4]
     }, results);
     t.end();
   });

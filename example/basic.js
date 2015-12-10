@@ -1,4 +1,4 @@
-/*eslint-disable no-console, func-names, handle-callback-err */
+/* eslint-disable no-console, func-names, handle-callback-err */
 'use strict';
 
 var parallelize = require('../');

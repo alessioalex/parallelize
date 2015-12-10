@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "node test/test.js",
-    "lint": "eslint index.js example/*.js test/test.js",
+    "lint": "alessioalex-standard",
     "benchmark": "matcha benchmark/go.js",
     "precommit": "npm run lint && npm test"
   },
@@ -30,17 +30,17 @@
   },
   "homepage": "https://github.com/alessioalex/parallelize",
   "devDependencies": {
-    "async": "^1.2.1",
-    "eslint": "^0.23.0",
-    "fastparallel": "^1.5.3",
-    "husky": "^0.8.1",
+    "alessioalex-standard": "^1.1.0",
+    "async": "^1.5.0",
+    "fastparallel": "^2.2.1",
+    "husky": "^0.10.2",
     "matcha": "^0.6.0",
-    "neo-async": "^1.2.1",
-    "run-parallel": "^1.1.1",
-    "tape": "~3.0.3"
+    "neo-async": "^1.7.1",
+    "run-parallel": "^1.1.4",
+    "tape": "~4.2.2"
   },
   "dependencies": {
-    "sliced": "0.0.5"
+    "sliced": "1.0.1"
   },
   "testling": {
     "files": "test/*.js",

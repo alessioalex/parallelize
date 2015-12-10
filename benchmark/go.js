@@ -1,6 +1,6 @@
-"use strict";
+/* eslint-disable no-console, func-names, handle-callback-err */
+'use strict';
 
-var matcha = require('matcha');
 var parallelize = require('../');
 var async = require('async');
 var neoAsync = require('neo-async');
