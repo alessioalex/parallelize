@@ -32,6 +32,7 @@
   "devDependencies": {
     "alessioalex-standard": "^1.1.0",
     "async": "^1.5.0",
+    "bytes": "^2.2.0",
     "fastparallel": "^2.2.1",
     "husky": "^0.10.2",
     "matcha": "^0.6.0",

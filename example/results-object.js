@@ -1,31 +1,28 @@
 /* eslint-disable no-console, func-names, handle-callback-err */
 'use strict';
 
+var bytes = require('bytes');
+var fs = require('fs');
+var path = require('path');
 var parallelize = require('../');
 
-var next = parallelize(function(err, results) {
+var file1 = __filename;
+var file2 = path.resolve(__dirname + '/../package.json');
+
+var next = parallelize();
+
+fs.readFile(file1, next('file1'));
+fs.readFile(file2, next('file2'));
+
+next(function displayResults(err, results) {
   if (err) { throw err; }
 
-  console.log('\n------------ ALL DONE ------------ \n');
-  // results is an object this time
-  console.log(results);
+  // access results by specified properties instead of by index
+  console.log(file1 + ' size = %s', bytes(Buffer.byteLength(results.file1)));
+  console.log(file2 + ' size = %s', bytes(Buffer.byteLength(results.file2)));
 });
 
-var callAsyncFn = function(fn, interval, args) {
-  setTimeout(function() {
-    // first arg of an async fn should be the err
-    args.unshift(null);
-    fn.apply(null, args);
-  }, interval);
-};
-
-callAsyncFn(next('firstFn'), 300, [0]);
-callAsyncFn(next('secondFn'), 100, [1, 2]);
-callAsyncFn(next('thirdFn'), 150, [3, 4]);
-
-// Should output ->
-/*
------------- ALL DONE ------------
-
-[ secondFn: [ 1, 2 ], thirdFn: [ 3, 4 ], firstFn: 0 ]
-*/
+// Sample output:
+//
+// /home/username/projects/parallelize/example/basic.js size = 649B
+// /home/username/projects/parallelize/package.json size = 1.11kB

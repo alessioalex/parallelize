@@ -27,12 +27,22 @@ suite('parallelize alternatives', function() {
     fastParallel({}, [asyncFn, asyncFn, asyncFn], 1, done);
   });
 
-  bench('parallelize', function(done) {
+  bench('parallelize v2 api', function(done) {
     var next = parallelize(done);
 
     asyncFn(1, next());
     asyncFn(1, next());
     asyncFn(1, next());
+  });
+
+  bench('parallelize new api', function(done) {
+    var next = parallelize();
+
+    asyncFn(1, next());
+    asyncFn(1, next());
+    asyncFn(1, next());
+
+    next(done);
   });
 
   bench('run-parallel', function(done) {
