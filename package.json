@@ -1,6 +1,6 @@
 {
   "name": "parallelize",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Control flow library for parallel async functions; it invokes the callback with the aggregated results or an error",
   "main": "index.js",
   "directories": {
