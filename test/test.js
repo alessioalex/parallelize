@@ -134,3 +134,23 @@ test('it should return an error', function(t) {
     t.pass('v3 api');
   });
 });
+
+test('it should work with one function', function(t) {
+  var next = parallelize();
+  t.plan(1);
+
+  callFn(next(), [1]);
+  next(function() {
+    t.ok(1);
+  });
+});
+
+test('it should work with no function', function(t) {
+  var next = parallelize();
+  t.plan(1);
+
+  next(function() {
+    t.ok(1);
+  });
+});
+

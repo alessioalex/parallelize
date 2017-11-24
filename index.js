@@ -28,6 +28,7 @@ function parallelize(finalCb) {
     } else if (finalCallback === noop && typeofIndex === 'function') {
       // last function is 'final' one: `next(finalCb)`
       counter--;
+      if (counter === -1) { return index(); }
       finalCallback = index;
     } else {
       // called with no arg for example
